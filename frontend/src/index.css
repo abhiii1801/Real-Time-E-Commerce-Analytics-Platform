@@ -1,0 +1,1179 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ============================================
+   XINTRA-STYLE DESIGN TOKENS
+   ============================================ */
+:root {
+  /* Brand Colors — exact Xintra palette */
+  --primary: #6259ca;
+  --primary-rgb: 98, 89, 202;
+  --primary-hover: #5649b2;
+  --primary-light: #e8e6fc;
+  --secondary: #f82649;
+  --secondary-rgb: 248, 38, 73;
+  --success: #09ad95;
+  --success-rgb: 9, 173, 149;
+  --warning: #f1a91e;
+  --warning-rgb: 241, 169, 30;
+  --info: #05c3fb;
+  --info-rgb: 5, 195, 251;
+  --danger: #f82649;
+  --danger-rgb: 248, 38, 73;
+  --pink: #f754a2;
+  --pink-rgb: 247, 84, 162;
+  --teal: #09ad95;
+  --teal-rgb: 9, 173, 149;
+  --orange: #fd7e14;
+  --orange-rgb: 253, 126, 20;
+  --cyan: #17a2b8;
+  --cyan-rgb: 23, 162, 184;
+
+  /* Chart Colors — Xintra soft pastels */
+  --chart-purple: #6259ca;
+  --chart-pink: #f754a2;
+  --chart-coral: #ff6b81;
+  --chart-teal: #09ad95;
+  --chart-blue: #05c3fb;
+  --chart-amber: #f1a91e;
+  --chart-orange: #fd7e14;
+  --chart-indigo: #4b3fa0;
+  --chart-green: #2dce89;
+  --chart-red: #f82649;
+
+  /* Light Theme */
+  --bg-body: #eaedf7;
+  --bg-card: #ffffff;
+  --bg-nav: rgba(255, 255, 255, 0.95);
+  --text-dark: #282f53;
+  --text-default: #3c4858;
+  --text-muted: #737f9e;
+  --text-light: #a8afc7;
+  --text-white: #ffffff;
+  --border-color: #e9ebfa;
+  --border-light: #f0f2f8;
+  --hover-bg: #f5f6fb;
+
+  /* Shadows — Xintra style */
+  --shadow-card: 0 0 10px rgba(40, 47, 83, 0.05);
+  --shadow-card-hover: 0 5px 20px rgba(40, 47, 83, 0.1);
+  --shadow-sm: 0 1px 3px rgba(40, 47, 83, 0.05);
+  --shadow-md: 0 4px 15px rgba(40, 47, 83, 0.08);
+  --shadow-lg: 0 8px 25px rgba(40, 47, 83, 0.1);
+
+  /* Radius */
+  --radius-sm: 5px;
+  --radius-md: 8px;
+  --radius-lg: 11px;
+  --radius-xl: 15px;
+  --radius-full: 50%;
+
+  /* Transitions */
+  --transition: all 0.3s ease;
+
+  /* Scrollbar */
+  --scrollbar-bg: transparent;
+  --scrollbar-thumb: #c7c9d6;
+}
+
+/* ============================================
+   DARK THEME — Xintra Dark
+   ============================================ */
+[data-theme='dark'] {
+  --bg-body: #1a1e2b;
+  --bg-card: #232838;
+  --bg-nav: rgba(35, 40, 56, 0.95);
+  --text-dark: #e4e6ef;
+  --text-default: #d1d5e4;
+  --text-muted: #8c90a4;
+  --text-light: #575c77;
+  --border-color: #32374a;
+  --border-light: #2b2f42;
+  --hover-bg: #2c3144;
+
+  --shadow-card: 0 0 10px rgba(0, 0, 0, 0.2);
+  --shadow-card-hover: 0 5px 20px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.3);
+
+  --scrollbar-thumb: #454a60;
+}
+
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-default);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: var(--transition);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+/* ============================================
+   SCROLLBARS — Xintra thin
+   ============================================ */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-bg);
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-wrapper {
+  flex: 1;
+  padding: 20px 40px;
+  max-width: 100%;
+  margin: 0;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .page-wrapper {
+    padding: 15px;
+  }
+}
+
+/* ============================================
+   TOP NAVIGATION — Xintra style top bar
+   ============================================ */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg-nav);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0 25px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.top-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  max-width: 100%;
+  padding: 0 40px;
+  margin: 0 auto;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-dark);
+}
+
+.nav-brand-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--primary), #7c72e5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.nav-brand-text {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--text-dark);
+}
+
+.nav-tabs {
+  display: flex;
+  gap: 2px;
+}
+
+.nav-tab {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 18px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+  position: relative;
+}
+
+.nav-tab:hover {
+  color: var(--primary);
+  background: rgba(var(--primary-rgb), 0.06);
+}
+
+.nav-tab.active {
+  color: var(--primary);
+  background: rgba(var(--primary-rgb), 0.08);
+  font-weight: 600;
+}
+
+.nav-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 55%;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-timestamp {
+  font-size: 12px;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.theme-toggle {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.theme-toggle:hover {
+  background: rgba(var(--primary-rgb), 0.08);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* ============================================
+   BREADCRUMB + PAGE HEADER — Xintra
+   ============================================ */
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.page-breadcrumb {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.page-breadcrumb a {
+  color: var(--primary);
+}
+
+.page-breadcrumb span {
+  color: var(--text-muted);
+}
+
+.page-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+/* ============================================
+   CARD — Xintra base card
+   ============================================ */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  padding: 20px;
+  transition: var(--transition);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.card-link {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--primary);
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+.card-link:hover {
+  background: rgba(var(--primary-rgb), 0.06);
+}
+
+/* ============================================
+   KPI CARD — Xintra style
+   Vertical layout: small label, large value,
+   increase/decrease text. Icon top-right.
+   ============================================ */
+.kpi-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  padding: 18px 20px;
+  position: relative;
+  transition: var(--transition);
+  animation: fadeInUp 0.4s ease-out both;
+  min-height: 110px;
+}
+
+.kpi-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.kpi-icon {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.kpi-icon.purple { background: rgba(var(--primary-rgb), 0.15); color: var(--primary); }
+.kpi-icon.pink { background: rgba(var(--pink-rgb), 0.15); color: var(--pink); }
+.kpi-icon.teal { background: rgba(var(--teal-rgb), 0.15); color: var(--teal); }
+.kpi-icon.amber { background: rgba(var(--warning-rgb), 0.15); color: var(--warning); }
+.kpi-icon.blue { background: rgba(var(--info-rgb), 0.15); color: var(--info); }
+.kpi-icon.red { background: rgba(var(--danger-rgb), 0.15); color: var(--danger); }
+.kpi-icon.success { background: rgba(var(--success-rgb), 0.15); color: var(--success); }
+.kpi-icon.orange { background: rgba(var(--orange-rgb), 0.15); color: var(--orange); }
+
+[data-theme='dark'] .kpi-icon.purple { background: rgba(var(--primary-rgb), 0.25); }
+[data-theme='dark'] .kpi-icon.pink { background: rgba(var(--pink-rgb), 0.25); }
+[data-theme='dark'] .kpi-icon.teal { background: rgba(var(--teal-rgb), 0.25); }
+[data-theme='dark'] .kpi-icon.amber { background: rgba(var(--warning-rgb), 0.25); }
+[data-theme='dark'] .kpi-icon.blue { background: rgba(var(--info-rgb), 0.25); }
+[data-theme='dark'] .kpi-icon.red { background: rgba(var(--danger-rgb), 0.25); }
+[data-theme='dark'] .kpi-icon.success { background: rgba(var(--success-rgb), 0.25); }
+[data-theme='dark'] .kpi-icon.orange { background: rgba(var(--orange-rgb), 0.25); }
+
+.kpi-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.kpi-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.kpi-change {
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.kpi-change.up {
+  color: var(--success);
+}
+
+.kpi-change.down {
+  color: var(--danger);
+}
+
+/* ============================================
+   CHART CARD — Xintra
+   ============================================ */
+.chart-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  padding: 20px;
+  transition: var(--transition);
+  animation: fadeInUp 0.4s ease-out both;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.chart-card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.chart-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.chart-card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.chart-legend-inline {
+  display: flex;
+  gap: 14px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.chart-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.chart-body {
+  flex: 1;
+  min-height: 0;
+}
+
+/* ============================================
+   DATA TABLE — Xintra style
+   ============================================ */
+.data-table-wrapper {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  animation: fadeInUp 0.4s ease-out both;
+  overflow: hidden;
+  transition: var(--transition);
+  height: 100%;
+}
+
+.data-table-wrapper:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.data-table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px 12px;
+}
+
+.data-table-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.data-table-scroll {
+  overflow-y: auto;
+  overflow-x: auto;
+  flex: 1;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--bg-card);
+  text-align: left;
+  padding: 10px 15px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.data-table tbody td {
+  padding: 12px 15px;
+  font-size: 13px;
+  color: var(--text-default);
+  border-bottom: 1px solid var(--border-light);
+  white-space: nowrap;
+}
+
+.data-table tbody tr {
+  transition: background 0.15s ease;
+}
+
+.data-table tbody tr:hover {
+  background: var(--hover-bg);
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.td-bold {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.td-success {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.td-primary {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.td-muted {
+  color: var(--text-muted);
+}
+
+/* ============================================
+   BADGES — Xintra pill badges
+   ============================================ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge-primary { background: rgba(var(--primary-rgb), 0.1); color: var(--primary); }
+.badge-success { background: rgba(var(--success-rgb), 0.1); color: var(--success); }
+.badge-danger { background: rgba(var(--danger-rgb), 0.1); color: var(--danger); }
+.badge-warning { background: rgba(var(--warning-rgb), 0.1); color: var(--warning); }
+.badge-info { background: rgba(var(--info-rgb), 0.1); color: var(--info); }
+.badge-pink { background: rgba(var(--pink-rgb), 0.1); color: var(--pink); }
+
+/* Order Status — Xintra colored text */
+.status-paid { color: var(--success); font-weight: 600; font-size: 12px; }
+.status-unpaid { color: var(--danger); font-weight: 600; font-size: 12px; }
+.status-pending { color: var(--warning); font-weight: 600; font-size: 12px; }
+.status-delivered { color: var(--success); font-weight: 600; font-size: 12px; }
+.status-cancelled { color: var(--danger); font-weight: 600; font-size: 12px; }
+.status-shipped { color: var(--info); font-weight: 600; font-size: 12px; }
+.status-processing { color: var(--primary); font-weight: 600; font-size: 12px; }
+.status-returned { color: var(--text-muted); font-weight: 600; font-size: 12px; }
+
+/* ============================================
+   LIVE DOT & LIVE BADGE
+   ============================================ */
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(var(--danger-rgb), 0.1);
+  color: var(--danger);
+  letter-spacing: 0.5px;
+}
+
+.live-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--danger);
+  animation: pulseLive 1.5s infinite;
+}
+
+@keyframes pulseLive {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.4); }
+}
+
+/* ============================================
+   HEALTH CARDS — Monitoring
+   ============================================ */
+.health-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: var(--transition);
+  animation: fadeInUp 0.4s ease-out both;
+}
+
+.health-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.health-card-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.health-card-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.health-card-icon.healthy {
+  background: rgba(var(--success-rgb), 0.12);
+  color: var(--success);
+}
+
+.health-card-icon.unhealthy {
+  background: rgba(var(--danger-rgb), 0.12);
+  color: var(--danger);
+}
+
+.health-card-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.health-card-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.status-dot.up {
+  background: var(--success);
+  box-shadow: 0 0 6px rgba(var(--success-rgb), 0.4);
+}
+
+.status-dot.down {
+  background: var(--danger);
+  box-shadow: 0 0 6px rgba(var(--danger-rgb), 0.4);
+  animation: pulseLive 1.5s infinite;
+}
+
+/* ============================================
+   HEALTH GAUGE — Xintra donut ring
+   ============================================ */
+.gauge-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  flex: 1;
+}
+
+.gauge-ring {
+  position: relative;
+  width: 130px;
+  height: 130px;
+}
+
+.gauge-ring svg {
+  transform: rotate(-90deg);
+}
+
+.gauge-ring-bg {
+  fill: none;
+  stroke: var(--border-color);
+  stroke-width: 12;
+}
+
+.gauge-ring-fill {
+  fill: none;
+  stroke-width: 12;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s ease-out;
+}
+
+.gauge-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.gauge-label {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ============================================
+   PIPELINE — horizontal flow
+   ============================================ */
+.pipeline-container {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  padding: 25px 20px;
+  overflow-x: auto;
+  animation: fadeInUp 0.4s ease-out both;
+}
+
+.pipeline-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-width: 700px;
+}
+
+.pipeline-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 20px;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--border-color);
+  background: var(--bg-card);
+  min-width: 90px;
+  transition: var(--transition);
+}
+
+.pipeline-node.healthy {
+  border-color: rgba(var(--success-rgb), 0.3);
+}
+
+.pipeline-node.unhealthy {
+  border-color: rgba(var(--danger-rgb), 0.3);
+}
+
+.pipeline-node-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-dark);
+  white-space: nowrap;
+}
+
+.pipeline-arrow {
+  color: var(--text-light);
+  flex-shrink: 0;
+}
+
+/* ============================================
+   GRID
+   ============================================ */
+.grid { display: grid; }
+.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-cols-5 { grid-template-columns: repeat(5, 1fr); }
+
+.col-span-2 { grid-column: span 2; }
+.col-span-3 { grid-column: span 3; }
+
+.gap-3 { gap: 12px; }
+.gap-4 { gap: 15px; }
+.gap-5 { gap: 20px; }
+.gap-6 { gap: 22px; }
+
+@media (max-width: 1280px) {
+  .grid-cols-5 { grid-template-columns: repeat(3, 1fr); }
+  .grid-cols-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 1024px) {
+  .grid-cols-3 { grid-template-columns: repeat(2, 1fr); }
+  .col-span-2 { grid-column: span 1; }
+}
+
+@media (max-width: 768px) {
+  .grid-cols-5,
+  .grid-cols-4,
+  .grid-cols-3,
+  .grid-cols-2 { grid-template-columns: 1fr; }
+  .col-span-2,
+  .col-span-3 { grid-column: span 1; }
+}
+
+/* ============================================
+   FLEX UTILITIES
+   ============================================ */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.flex-wrap { flex-wrap: wrap; }
+.flex-1 { flex: 1; }
+.gap-1 { gap: 4px; }
+.gap-2 { gap: 8px; }
+
+/* ============================================
+   SPACING
+   ============================================ */
+.mb-3 { margin-bottom: 12px; }
+.mb-4 { margin-bottom: 15px; }
+.mb-5 { margin-bottom: 20px; }
+.mb-6 { margin-bottom: 22px; }
+.mb-8 { margin-bottom: 30px; }
+.mt-2 { margin-top: 8px; }
+.mt-4 { margin-top: 15px; }
+
+/* ============================================
+   TEXT UTILITIES
+   ============================================ */
+.text-primary { color: var(--primary); }
+.text-success { color: var(--success); }
+.text-danger { color: var(--danger); }
+.text-warning { color: var(--warning); }
+.text-muted { color: var(--text-muted); }
+.text-light { color: var(--text-light); }
+.text-dark { color: var(--text-dark); }
+.text-xs { font-size: 11px; }
+.text-sm { font-size: 12px; }
+.text-base { font-size: 13px; }
+.text-lg { font-size: 15px; }
+.text-xl { font-size: 18px; }
+.text-2xl { font-size: 22px; }
+.text-3xl { font-size: 28px; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.uppercase { text-transform: uppercase; }
+.tracking-wide { letter-spacing: 0.5px; }
+
+/* ============================================
+   ANIMATIONS — Xintra
+   ============================================ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in { animation: fadeIn 0.4s ease-out both; }
+.animate-fade-up { animation: fadeInUp 0.4s ease-out both; }
+
+/* Stagger */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+
+/* ============================================
+   LOADING SKELETON
+   ============================================ */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--hover-bg) 25%,
+    var(--border-light) 50%,
+    var(--hover-bg) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius-lg);
+}
+
+.skeleton-card { height: 100px; }
+.skeleton-chart { height: 300px; }
+
+/* ============================================
+   SECTION HEADER — Xintra style
+   ============================================ */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border-color);
+}
+
+/* ============================================
+   AVATAR
+   ============================================ */
+.avatar-sm {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-full);
+  background: var(--hover-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  font-size: 13px;
+}
+
+/* ============================================
+   CUSTOM TOOLTIP — Xintra
+   ============================================ */
+.custom-tooltip {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  box-shadow: var(--shadow-lg);
+}
+
+.custom-tooltip .tooltip-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.custom-tooltip .tooltip-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-dark);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.custom-tooltip .tooltip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+/* ============================================
+   RECHARTS OVERRIDES
+   ============================================ */
+.recharts-text {
+  fill: var(--text-muted);
+  font-size: 11px;
+  font-family: 'Inter', sans-serif;
+}
+
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: var(--border-color);
+}
+
+.recharts-tooltip-wrapper {
+  outline: none;
+}
+
+.recharts-legend-item-text {
+  color: var(--text-muted) !important;
+  font-size: 11px !important;
+}
+
+/* ============================================
+   LIVE ORDER ROW ANIMATION
+   ============================================ */
+.live-order-row {
+  animation: slideInFromTop 0.5s ease-out both;
+}
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  color: var(--text-light);
+  gap: 10px;
+}
+
+.empty-state-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: var(--hover-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light);
+}
+
+/* ============================================
+   RESPONSIVE NAV
+   ============================================ */
+@media (max-width: 768px) {
+  .top-nav {
+    padding: 0 12px;
+  }
+
+  .top-nav-inner {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 8px 0;
+    gap: 6px;
+  }
+
+  .nav-tabs {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .nav-timestamp {
+    display: none;
+  }
+}
