@@ -55,6 +55,10 @@ Analytics Tables
 
 ### Analytics Dashboard
 
+<img width="1917" height="1043" alt="Screenshot From 2026-06-11 15-50-45" src="https://github.com/user-attachments/assets/2af85cd4-d87c-4c2f-a960-06b6f22e9923" />
+<img width="1917" height="1043" alt="Screenshot From 2026-06-11 15-51-04" src="https://github.com/user-attachments/assets/4ad3961a-af1b-429f-8d8f-c604e074f9a3" />
+
+
 * Revenue & Sales KPIs
 * Profitability Metrics
 * Inventory Analytics
@@ -66,6 +70,8 @@ Analytics Tables
 * Payment Method Analysis
 
 ### Live Orders Dashboard
+<img width="1917" height="1108" alt="Screenshot From 2026-06-11 15-51-24" src="https://github.com/user-attachments/assets/2f4e129e-ac42-4dd2-a216-2b0c4387a883" />
+
 
 * Real-Time Order Feed
 * Orders Per Minute
@@ -74,6 +80,8 @@ Analytics Tables
 * Active Customers
 
 ### Monitoring Dashboard
+<img width="1917" height="1108" alt="Screenshot From 2026-06-11 15-51-30" src="https://github.com/user-attachments/assets/81f85b10-7b55-4249-9ee7-1be6911fed3a" />
+
 
 * PostgreSQL Health
 * Kafka Health
@@ -132,26 +140,6 @@ GET /live-stats
 GET /system-health
 GET /data-quality
 ```
-
-## Screenshots
-
-### Analytics Dashboard
-
-Provides sales, profit, inventory, customer, product, and regional analytics.
-
-![Analytics Dashboard](docs/screenshots/analytics-dashboard.png)
-
-### Live Orders Dashboard
-
-Displays real-time transactions and streaming metrics.
-
-![Live Orders Dashboard](docs/screenshots/live-orders.png)
-
-### Monitoring Dashboard
-
-Tracks system health, pipeline status, and data quality metrics.
-
-![Monitoring Dashboard](docs/screenshots/monitoring-dashboard.png)
 
 ## Running the Project
 
